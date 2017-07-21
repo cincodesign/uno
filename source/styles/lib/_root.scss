@@ -1,0 +1,14 @@
+@mixin root {
+  :root {
+    font-size: $font-size;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: none;
+  }
+
+  *,
+  ::after,
+  ::before {
+    box-sizing: inherit;
+  }
+}

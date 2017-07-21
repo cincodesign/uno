@@ -1,0 +1,47 @@
+/**
+  app.scss
+
+  This is the main point of entry for your app's styles.
+  Uno uses Sass and comes with the Based.css framework.
+
+  You can add dependencies from npm:
+    $ yarn add bootstrap
+
+  Import frameworks and libraries from node_modules:
+    @import 'bootstrap/dist/css/bootstrap';
+
+**/
+
+@charset 'UTF-8';
+
+// Config - configure app variables
+@import 'config.based'; // optional
+@import 'config';
+
+// Lib - @rules, dependencies, and mixins
+@import 'lib/root';
+@import 'lib/fonts';
+@import 'lib/functions';
+@import 'lib/mixins';
+@import 'lib/animations';
+
+// Core - basic styles shared between pages/components
+@import 'core/base';
+@import 'core/typography';
+@import 'core/helpers';
+
+// Components - functional pieces used in multiple places
+@import 'components/buttons';
+@import 'components/carousel';
+
+// Sections - styles specific to universal sections
+@import 'sections/nav';
+@import 'sections/header';
+@import 'sections/footer';
+
+// Pages - styles specific to single pages
+@import 'pages/home';
+@import 'pages/about';
+
+// Import Based.css framework
+@import 'based.css/src/based'; // optional

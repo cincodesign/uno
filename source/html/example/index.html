@@ -1,0 +1,32 @@
+@@include("_header.html", {
+  "title": "Uno Example",
+  "description": "Page Description"
+})
+
+<div class="wrap">
+  <div class="row">
+    <div class="col">
+      <h1>Test Directory</h1>
+      <p>The following messages have been included from the templates.</p>
+
+      <h2>Includes</h2>
+      <blockquote cite="http://">
+        @@include("_example.html", {
+          "message": "This message is coming from '/example/index.html' through '/_includes/_example.html'."
+        })
+        @@include("_example.html", {
+          "message": "This message is using the same template as above."
+        })
+      </blockquote>
+
+      <h2>Looping</h2>
+      <p>The following messages are looping through a JSON file in 'source/html/example/example.json'</p>
+      <blockquote>
+        @@loop("_example.html", "example/example.json")
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+
+@@include("_footer.html")

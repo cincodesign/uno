@@ -1,0 +1,240 @@
+<style media="screen">
+  @keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes widen {
+    0% {
+      width: 0;
+      border-width: 3px;
+      left: 400px;
+      opacity: 0;
+    }
+    25% {
+      width: 400px;
+      border-width: 3px;
+      left: 200px;
+      opacity: 1;
+    }
+    100% {
+      width: 300px;
+      border-width: 3px;
+      left: 250px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes reveal {
+    0% {
+      -webkit-clip-path: circle(0 at 50% 50%);
+      clip-path: circle(0 at 50% 50%);
+    }
+    25% {
+      -webkit-clip-path: circle(50.0% at 50% 50%);
+      clip-path: circle(50.0% at 50% 50%);
+    }
+    100% {
+      -webkit-clip-path: circle(100% at 50% 50%);
+      clip-path: circle(100% at 50% 50%);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .hero {
+    position: relative;
+    height: 430px;
+  }
+
+  .hero img {
+    margin-top: 0px;
+    -webkit-animation: reveal 5s ease forwards;
+    animation: reveal 5s ease forwards;
+  }
+
+  .showgrid .row .col {
+    min-height: 64px;
+    line-height: 64px;
+  }
+
+  .showgrid .row .col::before {
+    content: attr(class) " ";
+  }
+
+  .showgrid .row {
+    margin-bottom: 40px;
+    background-color: rgba(74, 84, 239, 0.05);
+  }
+
+  .showgrid .row .row {
+    margin-bottom: 0;
+  }
+
+  .showgrid .col {
+    background-color: rgba(74, 84, 239, 0.15);
+  }
+
+  .showgrid .col+.col:nth-child(even) {
+    background-color: rgba(74, 84, 239, 0.1);
+  }
+
+  code {
+    display: inline;
+    background: rgba(0, 0, 0, 0.05);
+    font-size: 0.9rem;
+    line-height: 1;
+    font-weight: normal;
+    padding: 2px 6px;
+    margin: 0;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-family: 'Source Code Pro', monospace;
+    color: #ed333e;
+  }
+
+  table td {
+    padding: 1rem 1rem;
+  }
+
+  table tr:nth-child(even) {
+    background: whitesmoke;
+  }
+
+  details {
+    outline: 0;
+  }
+
+  #uno {
+    height: 400px;
+    width: 400px;
+    -webkit-animation: rotate 20s linear infinite;
+    animation: rotate 20s linear infinite;
+    -webkit-transform-origin: 100%;
+    transform-origin: 100%;
+    position: absolute;
+    top: 100px;
+    left: -400px;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  #uno li {
+    width: 400px;
+    height: 400px;
+    -webkit-animation: widen 5s ease forwards;
+    animation: widen 5s ease forwards;
+    position: absolute;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    border: 10px solid;
+    box-sizing: border-box;
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+  }
+
+  #uno li:nth-child(1) {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    border-color: #333eed;
+  }
+
+  #uno li:nth-child(2) {
+    -webkit-transform: rotate(18deg);
+    transform: rotate(18deg);
+    border-color: #ed333e;
+  }
+
+  #uno li:nth-child(3) {
+    -webkit-transform: rotate(36deg);
+    transform: rotate(36deg);
+    border-color: #333eed;
+  }
+
+  #uno li:nth-child(4) {
+    -webkit-transform: rotate(54deg);
+    transform: rotate(54deg);
+    border-color: #ed333e;
+  }
+
+  #uno li:nth-child(5) {
+    -webkit-transform: rotate(72deg);
+    transform: rotate(72deg);
+    border-color: #333eed;
+  }
+
+  #uno li:nth-child(6) {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    border-color: #ed333e;
+  }
+
+  #uno li:nth-child(7) {
+    -webkit-transform: rotate(108deg);
+    transform: rotate(108deg);
+    border-color: #333eed;
+  }
+
+  #uno li:nth-child(8) {
+    -webkit-transform: rotate(126deg);
+    transform: rotate(126deg);
+    border-color: #ed333e;
+  }
+
+  #uno li:nth-child(9) {
+    -webkit-transform: rotate(144deg);
+    transform: rotate(144deg);
+    border-color: #333eed;
+  }
+
+  #uno li:nth-child(10) {
+    -webkit-transform: rotate(162deg);
+    transform: rotate(162deg);
+    border-color: #ed333e;
+  }
+
+  .logo {
+    position: relative;
+    top: 50px;
+  }
+
+  .desc {
+    opacity: 0;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition-property: opacity;
+    animation: fade-in 2s 2s ease forwards;
+  }
+</style>
+<div class="hero pt4 pb1 text-center"> <img class="logo display-block mx-auto" src="/assets/images/uno.png" alt="Uno" width="300px" />
+<div class="desc">
+  <h1 class="hide-visually">Uno</h1>
+  <p>For making internet. <br>[<a href="https://github.com/cincodesign/uno">view source</a>] </div>
+  <ul id="uno" class="pe-none">
+    <!-- lol cool -->
+    <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+  </ul>
+</div>
+<div class="py3">@@include(markdown('../docs/sections/01_intro.md'))</div>
+<div class="py3">@@include(markdown('../docs/sections/02_install.md'))</div>
+<div class="py3">@@include(markdown('../docs/sections/03_app.md'))</div>
+<div class="py3">@@include(markdown('../docs/sections/04_utils.md'))</div>
+<footer class="sm py4"> &copy; 2017 <a href="http://cabe.io" target="_blank">Cabe Branson</a> &amp; <a href="https://cincodesign.com" target="_blank">Cinco Design</a> <br>Liscense: <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank">MIT</a> </footer>

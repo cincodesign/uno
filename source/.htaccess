@@ -1,0 +1,5 @@
+# Maintenance Mode
+##
+# RewriteCond %{REMOTE_ADDR} !^00\.00\.00\.00$
+# RewriteCond %{REQUEST_URI} !/maintenance/?$ [NC]
+# RewriteRule ^(.*)$ /maintenance [R=307,L]
