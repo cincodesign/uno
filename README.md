@@ -12,7 +12,7 @@ Uno requires:
 
 Clone a new Uno, replacing `APP_NAME` with your own
 ```sh
-$ git clone https://github.com/bitmap/uno.git APP_NAME
+$ git clone https://github.com/cincodesign/uno.git APP_NAME
 ```
 
 Once you've cloned or downloaded the source, you simply need to run `yarn install` in that directory. Running `yarn start` will start a local development server at `localhost:1337`. Your default browser should open automatically. That's it. That's really it.
