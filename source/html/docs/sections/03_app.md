@@ -1,8 +1,8 @@
 # What's in the box
 ---
-There are _a lot_ of front-end tools in here. `gulp` and its numerous plug-ins, `browserify` with `babelify` that transpiles ES6 into code your browser can read, `sass` and a sprinkle of `postcss`. I'd be happy to explain how this all works over coffee, but for brevity's sake I'm gonna just hit the stuff that's going to get you rolling.
+There are _a lot_ of front-end tools in here. `gulp` and its numerous plug-ins, `browserify` with `babelify` that transpiles ES6 into code your browser can read, `sass` sprinkled with `postcss`. I'd be happy to explain how this all works over coffee, but for brevity's sake I'm gonna just hit the stuff that's going to get you rolling.
 
-## Markup
+## HTML
 ---
 The main HTML file is `source/html/index.html`.
 
@@ -16,7 +16,7 @@ This handy plugin will also parse markdown files to HTML:
 
 gulp-file-include has a bunch of great features, like `@@for` loops, and `@@if` conditionals, plus it even lets you loop over `JSON` data for advanced templating. It's best to [read up on what it can do](https://www.npmjs.com/package/gulp-file-include).
 
-## Styles
+## CSS
 ---
 The entry file for you app's styles is `source/styles/app.scss`. CSS files get compiled from Sass.
 
@@ -48,17 +48,19 @@ Uno comes with a few cool [utilities](#uno-sass-utils) that make stylin' a littl
 ### Postcss
 On build, your styles takes a quick trip through [postcss](https://github.com/postcss/postcss) to automate some gotchas. We run [autoprefixer](https://www.npmjs.com/package/autoprefixer) so you can forgo writing vendor prefixes, [pixrem](https://www.npmjs.com/package/pixrem) to convert `rem` units to `px` as a fallback, and [mqpacker](https://www.npmjs.com/package/css-mqpacker) to organize your media queries so you don't have to worry about duplicate queries causing cascading issues.
 
-## Scripts
+## JavaScript
 ---
 The main JS file is `source/scripts/app.js`.
 
-We've baked in [Babel](http://babeljs.com/) support by default. ES6 JavaScript gets compiled in browser-readable core (thanks [Browserify](http://browserify.org/)). This also allows you to install scripts and libraries (like jQuery) from `npm` instead of manually managing files yourself.
+We've baked in ES6 support (using [Babel](http://babeljs.com/)). ES6 JavaScript gets transpiled into browser-readable code. [Read up on ES6 syntax and features](https://babeljs.io/learn-es2015/).
+
+You also have the ability to import modules and libraries (like jQuery) from `npm` instead of manually managing files yourself.
 
 - Install modules from npm in the command line: `yarn add jquery`. This install the script as a dependency.
 - Import these dependencies at the top of your JS files: `import $ from 'jquery'`
 - PLUS, you can import your own scripts: `import component from './path/to/file'`
 
-The `app.js` file conatains a super basic example. [Read up on ES6 syntax and features](https://babeljs.io/learn-es2015/) if you haven't.
+The `app.js` file contains a super basic example.
 
 ### I don't like things the way they are...
 Hell, neither do I, but this is a good start. You can easily add more advanced templating like EJS, Jade, or Mustache, replace Based.css with Bootstrap, wire it up to use CoffeeScript if that's your thing, or create your own scripts.
