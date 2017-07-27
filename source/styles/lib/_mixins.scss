@@ -14,8 +14,7 @@
       @content;
     }
   } @else {
-    @error 'No value found for `#{$breakpoint}`. '
-         + 'Please make sure it is defined in `$breakpoints` map.';
+    @error 'No value found for `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.';
   }
 }
 
@@ -42,7 +41,7 @@
   } @else if $size == sm {
     font-size: 80%;
   } @else {
-    @warn "font-size mixin supports: base, h1, h2, h3, h4, h5, sm";
+    @error 'font-size mixin supports: base, h1, h2, h3, h4, h5, sm';
   }
 }
 

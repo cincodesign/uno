@@ -5,7 +5,9 @@
   "repository": "https://github.com/cincodesign/uno",
   "scripts": {
     "start": "gulp",
-    "test": "eslint source/scripts/**",
+    "test": "npm run test:js; npm run test:css",
+    "test:js": "eslint 'source/scripts/**' || true",
+    "test:css": "sass-lint -c .sass-lint.yml 'source/styles/**/*.scss' -v -f stylish -q || true",
     "imgmin": "gulp imgmin",
     "build": "gulp build"
   },
@@ -48,6 +50,7 @@
     "pixrem": "^3.0.2",
     "prettier": "^1.5.3",
     "run-sequence": "^1.1.5",
+    "sass-lint": "^1.10.2",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {

@@ -20,12 +20,12 @@ Once you've cloned or downloaded the source, you simply need to run `yarn instal
 ## Scripts
 Uno comes with a few built-in scripts out of the box. These are designed to streamline common workflows. You can run these scripts with either `yarn` or `npm`.
 
-| Script                     | Description     |
+| Script&nbsp;Name                     | Description     |
 | :------------------------- | :-------------  |
-|`start`                | Begins a local dev server, which will watch your code for changes and trigger the various 'gulp' scripts to run. Your browser will automatically reload when it's finished.
-|`test`                 | This will run [eslint](http://eslint.org/). Uno comes pre-configured with [AirBnb's style guide](https://github.com/airbnb/javascript) and [Prettier](https://github.com/prettier/prettier) extensions. It's recommended you install the eslint plugin in your [favorite text editor](https://github.com/AtomLinter/linter-eslint).
-|`imgmin`               | This task will compress your `jpg`,`png`,`gif`, and `svg` files. It will squish a lot of bits out of your images, and this can have unintended consequences. It's left out of the main build scripts for a reason: use it wisely, and back up your stuff.
-|`build`                | Before you hit the tubes, run `yarn build`. This'll minify your javascript and CSS and get everything tidy for production. All you need to do is throw your "build" folder up on the server and clock out. If you're using a service to deploy files, run this script on the server every time you push.
+|`yarn start`                | Begins a local dev server, which will watch your code for changes and trigger the various 'gulp' scripts to run. Your browser will automatically reload when it's finished.
+|`yarn test`                 | This will run [eslint](http://eslint.org/) and [sass-lint](https://github.com/sasstools/sass-lint). Uno comes pre-configured with [AirBnb's style guide](https://github.com/airbnb/javascript) for JS and [Prettier](https://github.com/prettier/prettier) extensions. It's recommended you install a linter plugin in your [favorite text editor](https://github.com/AtomLinter/linter-eslint).
+|`yarn imgmin`               | This task will compress your `jpg`,`png`,`gif`, and `svg` files. It will squish a lot of bits out of your images, and this can have unintended consequences. It's left out of the main build scripts for a reason: use it wisely, and back up your stuff.
+|`yarn build`                | Before you hit the tubes, run `yarn build`. This'll minify your javascript and CSS and get everything tidy for production. All you need to do is throw your "build" folder up on the server and clock out. If you're using a service to deploy files, run this script on the server every time you push.
 
 ## Anything else?
 Oh hell yeah. <a href="http://uno.cinco.io" target="blank">See the full documentation.</a>

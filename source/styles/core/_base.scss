@@ -1,9 +1,9 @@
 // Base application styles
-@include font();
-@include root();
+@include font;
+@include root;
 
 body {
-  @include regular-font();
+  @include regular-font;
   margin: 0;
   color: $color-black;
   line-height: $line-height;
@@ -40,6 +40,6 @@ strong {
 }
 
 hr {
-  border: 0;
+  border: none;
   border-bottom: 1px solid $color-secondary;
 }

@@ -1,40 +1,35 @@
 // Font settings
 
-@mixin font() {
-  $font-path: '/assets/fonts/PT_Sans/';
-  $font-name-regular: 'PT_Sans-Regular';
-  $font-name-bold: 'PT_Sans-Bold';
+@mixin font {
+  // sass-lint:disable-block indentation
+  $_path: '/assets/fonts/PT_Sans/';
+  $font-regular: 'PT_Sans-Regular';
+  $font-bold: 'PT_Sans-Bold';
 
   @font-face {
     font-family: 'PT Sans';
-    src: url('#{$font-path}#{$font-name-regular}.eot');
-    src: url('#{$font-path}#{$font-name-regular}.eot') format('embedded-opentype'),
-      url('#{$font-path}#{$font-name-regular}.woff') format('woff'),
-      url('#{$font-path}#{$font-name-regular}.ttf') format('truetype'),
-      url('#{$font-path}#{$font-name-regular}.svg#pt_sansregular') format('svg');
+    src: url('#{$_path}#{$font-regular}.woff') format('woff'),
+      url('#{$_path}#{$font-regular}.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'PT Sans Bold';
-    src: url('#{$font-path}#{$font-name-bold}.eot');
-    src: url('#{$font-path}#{$font-name-bold}.eot') format('embedded-opentype'),
-      url('#{$font-path}#{$font-name-bold}.woff') format('woff'),
-      url('#{$font-path}#{$font-name-bold}.ttf') format('truetype'),
-      url('#{$font-path}#{$font-name-bold}.svg#pt_sansbold') format('svg');
+    src: url('#{$_path}#{$font-bold}.woff') format('woff'),
+      url('#{$_path}#{$font-bold}.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
 }
 
-@mixin regular-font() {
+@mixin regular-font {
   font-family: 'PT Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
 }
 
-@mixin bold-font() {
+@mixin bold-font {
   font-family: 'PT Sans Bold', sans-serif;
   font-style: normal;
   font-weight: 700;

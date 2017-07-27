@@ -1,5 +1,6 @@
 @mixin root {
   :root {
+    // sass-lint:disable-block no-vendor-prefixes
     font-size: $font-size;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;

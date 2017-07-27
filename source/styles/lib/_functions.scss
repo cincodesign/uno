@@ -9,6 +9,6 @@
   @return (strip-unit($value) * $rem + rem);
 }
 
-@function cssColor($color) {
-  @return map_get($cssColors, $color);
+@function css-color($color) {
+  @return map_get($css-colors, $color);
 }
