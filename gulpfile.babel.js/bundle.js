@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import notify from 'gulp-notify';
+// import notify from 'gulp-notify';
 import browserify from 'browserify';
 import source from 'vinyl-source-stream';
 import paths from './paths';
@@ -9,11 +9,11 @@ const bundler = browserify({
   extensions: ['.js'],
   debug: true,
 }).transform('babelify', {
-  presets: ['es2015'],
+  presets: ['@babel/env'],
 });
 
 function handleError(err) {
-  notify().write(err);
+  console.log(err)
   this.emit('end');
 }
 

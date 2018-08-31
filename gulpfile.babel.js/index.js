@@ -1,7 +1,5 @@
 import gulp from 'gulp';
 import del from 'del';
-import browserSync from 'browser-sync';
-import runSequence from 'run-sequence';
 import paths from './paths';
 import art from './art';
 
@@ -13,40 +11,48 @@ import copyfiles from './copyfiles';
 import useref from './useref';
 import serve from './serve';
 import imgmin from './imgmin';
+import watch from './watch';
 
-gulp.task('clean', () => del([`${paths.build}/*`]));
-gulp.task('html', () => html());
-gulp.task('styles', () => styles());
-gulp.task('bundle', () => bundle());
-gulp.task('copyfiles', () => copyfiles());
-gulp.task('imgmin', () => imgmin());
-gulp.task('serve', ['watch'], () => serve());
-gulp.task('useref', () => useref());
-gulp.task('finale', () => {
-  del([
-    `${paths.build}/styles/maps/`,
-    `${paths.build}/styles/app.css`,
-    `${paths.build}/scripts/bundle.js`,
-  ]);
-  console.log(art.build);
-});
-gulp.task('watch', () => {
-  gulp.watch([paths.html, paths.docs, paths.data], ['html', browserSync.reload]);
-  gulp.watch(paths.styles, ['styles', browserSync.reload]);
-  gulp.watch(paths.scripts.all, ['bundle', browserSync.reload]);
-  gulp.watch(paths.images, ['copyfiles', browserSync.reload]);
-});
+const cleanTask = () => del([`${paths.build}/*`]);
+const htmlTask = () => html();
+const styleTask = () => styles();
+const bundleTask = () => bundle();
+const copyTask = () => copyfiles();
+const imgminTask = () => imgmin();
+const serveTask = () => serve();
+const watchTask = () => watch();
+const cleanBuild = () => del([
+  `${paths.build}/styles/maps/`,
+  `${paths.build}/styles/app.css`,
+  `${paths.build}/scripts/bundle.js`,
+]);
 
-const buildTasks = ['html', 'styles', 'bundle', 'copyfiles'];
+const finale = () => { console.log(art.build); }
+
+gulp.task('clean', cleanTask);
+gulp.task('html', htmlTask);
+gulp.task('styles', styleTask);
+gulp.task('bundle', bundleTask);
+gulp.task('copyfiles', copyTask);
+gulp.task('imgmin', imgminTask);
+gulp.task('useref', useref);
+gulp.task('cleanBuild', cleanBuild);
+gulp.task('watch', watchTask);
+gulp.task('serve', serveTask);
+gulp.task('finale', finale);
+
+function development() {
+  return gulp.series('clean', 'html', 'styles', 'bundle', 'copyfiles', 'serve');
+}
+
+function production() {
+  return gulp.series('clean', 'html', 'styles', 'bundle', 'copyfiles', 'useref', 'cleanBuild');
+}
 
 // Development
-gulp.task('default', ['clean'], () => {
-  runSequence(buildTasks, 'serve');
-});
+gulp.task('default', development());
 
 // Deployment
-gulp.task('build', ['clean'], () => {
-  runSequence(buildTasks, 'useref', 'finale');
-});
+gulp.task('build', production());
 
 console.log(art.splash);

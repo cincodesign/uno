@@ -1,4 +1,4 @@
-/**
+/*
   app.js
 
   This is the main point of entry for your app's scripts.
@@ -14,7 +14,7 @@
     import $ from 'jquery'
 
   Now you can use $(). Import any module from npm, or import your own (try it below).
-**/
+*/
 
 // import $ from 'jquery';
 import { hello, log } from './components/example';
