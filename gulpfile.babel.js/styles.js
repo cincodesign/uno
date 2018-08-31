@@ -6,7 +6,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'autoprefixer';
 import pixrem from 'pixrem';
 import mqpacker from 'css-mqpacker';
-import paths from './paths';
+import { source, build } from './paths';
 import plumberConfig from './plumber';
 
 const processors = [
@@ -19,9 +19,9 @@ const processors = [
   pixrem,
 ];
 
-module.exports = () =>
+const styles = () =>
   gulp
-    .src(paths.styles)
+    .src(source.styles)
     .pipe(plumber(plumberConfig))
     .pipe(sourcemaps.init())
     .pipe(
@@ -31,4 +31,6 @@ module.exports = () =>
     )
     .pipe(postcss(processors))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(`${paths.build}/styles/`));
+    .pipe(gulp.dest(build.styles));
+
+export default styles

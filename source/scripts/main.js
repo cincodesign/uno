@@ -1,14 +1,14 @@
 /*
-  app.js
+  main.js
 
-  This is the main point of entry for your app's scripts.
+  This is the main point of entry for your site's scripts.
   Uno comes with Babel, so you can start using ES2015 features.
 
   It is recommended that you install "eslint" and "prettier" extensions
   in your favorite text editor to maintain code style and consistancy.
 
   You can add dependencies from npm:
-    $ yarn add jquery
+    $ npm install jquery
 
   Then, at the top of this file, import it:
     import $ from 'jquery'
@@ -19,11 +19,11 @@
 // import $ from 'jquery';
 import { hello, log } from './components/example';
 
-function app() {
+function init() {
   // log($());
 
   log(hello.world);
   log(hello.mundo);
 }
 
-app();
+init();

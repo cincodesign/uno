@@ -1,58 +1,32 @@
 import gulp from 'gulp';
 import del from 'del';
-import paths from './paths';
-import art from './art';
+import { build } from './paths';
+import { splash, finish } from './art';
+import { serve, watch } from './dev';
+import {
+  templates,
+  styles,
+  scripts,
+  copyfiles,
+  compress,
+  minifyAssets,
+} from './tasks';
 
-// Import tasks
-import html from './html';
-import styles from './styles';
-import bundle from './bundle';
-import copyfiles from './copyfiles';
-import useref from './useref';
-import serve from './serve';
-import imgmin from './imgmin';
-import watch from './watch';
+// Tasks
+// Cleanup tasks
+const { all, maps, css, js } = build
+const clean = () => del([all]);
+const wrapup = () => del([maps, css, js]).then(() => finish());
 
-const cleanTask = () => del([`${paths.build}/*`]);
-const htmlTask = () => html();
-const styleTask = () => styles();
-const bundleTask = () => bundle();
-const copyTask = () => copyfiles();
-const imgminTask = () => imgmin();
-const serveTask = () => serve();
-const watchTask = () => watch();
-const cleanBuild = () => del([
-  `${paths.build}/styles/maps/`,
-  `${paths.build}/styles/app.css`,
-  `${paths.build}/scripts/bundle.js`,
-]);
+// Dev (npm start)
+const tasks = [clean, templates, styles, scripts, copyfiles]
+gulp.task('default', gulp.series(tasks, gulp.parallel(serve, watch)));
 
-const finale = () => { console.log(art.build); }
+// Production (npm run build)
+const production = [...tasks, compress, wrapup]
+gulp.task('build', gulp.series(production));
 
-gulp.task('clean', cleanTask);
-gulp.task('html', htmlTask);
-gulp.task('styles', styleTask);
-gulp.task('bundle', bundleTask);
-gulp.task('copyfiles', copyTask);
-gulp.task('imgmin', imgminTask);
-gulp.task('useref', useref);
-gulp.task('cleanBuild', cleanBuild);
-gulp.task('watch', watchTask);
-gulp.task('serve', serveTask);
-gulp.task('finale', finale);
+// Minify images (npm run imgmin)
+gulp.task('imgmin', minifyAssets);
 
-function development() {
-  return gulp.series('clean', 'html', 'styles', 'bundle', 'copyfiles', 'serve');
-}
-
-function production() {
-  return gulp.series('clean', 'html', 'styles', 'bundle', 'copyfiles', 'useref', 'cleanBuild');
-}
-
-// Development
-gulp.task('default', development());
-
-// Deployment
-gulp.task('build', production());
-
-console.log(art.splash);
+splash()

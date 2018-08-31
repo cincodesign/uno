@@ -1,20 +1,20 @@
-/**
-  app.scss
+/*
+  main.scss
 
-  This is the main point of entry for your app's styles.
+  This is the main point of entry for your site's styles.
   Uno uses Sass and comes with the Based.css framework.
 
   You can add dependencies from npm:
-    $ yarn add bootstrap
+    $ npm install bootstrap
 
   Import frameworks and libraries from node_modules:
     @import 'bootstrap/dist/css/bootstrap';
 
-**/
+*/
 
 @charset 'UTF-8';
 
-// Config - configure app variables
+// Config - configure site variables
 @import 'config.based'; // optional
 @import 'config';
 

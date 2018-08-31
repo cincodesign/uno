@@ -1,11 +1,11 @@
 import gulp from 'gulp';
-// import notify from 'gulp-notify';
+import notify from 'gulp-notify';
 import browserify from 'browserify';
-import source from 'vinyl-source-stream';
-import paths from './paths';
+import stream from 'vinyl-source-stream';
+import { source, build } from './paths';
 
 const bundler = browserify({
-  entries: paths.scripts.app,
+  entries: source.scripts.main,
   extensions: ['.js'],
   debug: true,
 }).transform('babelify', {
@@ -13,13 +13,15 @@ const bundler = browserify({
 });
 
 function handleError(err) {
-  console.log(err)
+  notify().write(err)
   this.emit('end');
 }
 
-module.exports = () =>
+const scripts = () =>
   bundler
     .bundle()
     .on('error', handleError)
-    .pipe(source('bundle.js'))
-    .pipe(gulp.dest(`${paths.build}/scripts`));
+    .pipe(stream('bundle.js'))
+    .pipe(gulp.dest(build.scripts));
+
+export default scripts

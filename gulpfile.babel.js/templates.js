@@ -2,20 +2,22 @@ import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import fileInclude from 'gulp-file-include';
 import marked from 'marked';
-import paths from './paths';
+import { source, build } from './paths';
 import plumberConfig from './plumber';
 
-module.exports = () =>
+const templates = () =>
   gulp
-    .src(paths.index)
+    .src(source.indexFiles)
     .pipe(plumber(plumberConfig))
     .pipe(
       fileInclude({
         prefix: '@@',
-        basepath: paths.includes,
+        basepath: source.includes,
         filters: {
           markdown: marked,
         },
       }),
     )
-    .pipe(gulp.dest(paths.build));
+    .pipe(gulp.dest(build.dir));
+
+export default templates

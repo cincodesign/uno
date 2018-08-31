@@ -5,14 +5,14 @@ import uglify from 'gulp-uglify';
 import cssnano from 'gulp-cssnano';
 import rev from 'gulp-rev';
 import revReplace from 'gulp-rev-replace';
-import paths from './paths';
+import { build } from './paths';
 
-module.exports = () =>
+const compress = () =>
   gulp
-    .src(`${paths.build}/**/*.html`)
+    .src(build.templates)
     .pipe(
       useref({
-        searchPath: paths.build,
+        searchPath: build.dir,
       }),
     )
     .pipe(gulpif('*.js', uglify()))
@@ -20,4 +20,6 @@ module.exports = () =>
     .pipe(gulpif('*.css', cssnano()))
     .pipe(gulpif('*.css', rev()))
     .pipe(revReplace())
-    .pipe(gulp.dest(paths.build));
+    .pipe(gulp.dest(build.dir));
+
+export default compress

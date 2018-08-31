@@ -20,7 +20,7 @@ This will force a component to maintain a certain aspect ratio, useful for embed
 ### font-size
 `@include font-size ([base,h1,h2,h3,h4,h5,sm]);`
 
-This ensures you use consistent font sizes throughout your app.
+This ensures you use consistent font sizes throughout your site.
 
 ## Functions
 ---

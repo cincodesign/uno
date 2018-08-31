@@ -1,10 +1,12 @@
 import gulp from 'gulp';
-import paths from './paths';
+import { source, build } from './paths';
 
-module.exports = () =>
+const copyfiles = () =>
   gulp
     .src([
-      `${paths.source}/**/*.{ttf,woff,woff2,eof,svg,ico,png,jpg,gif,pdf}`,
-      `${paths.source}/**/.htaccess`,
+      source.assets,
+      source.htaccess,
     ])
-    .pipe(gulp.dest(paths.build));
+    .pipe(gulp.dest(build.dir));
+
+export default copyfiles
